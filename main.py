@@ -56,6 +56,7 @@ def main():
                     asteroid.split()
                     shot.kill()
                     if asteroid.radius <= 20:
+                        log_event("asteroid_destroyed, rewarding player")
                         player_score += 10
 
         pygame.display.flip()
