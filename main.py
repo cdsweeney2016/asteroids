@@ -32,6 +32,8 @@ def main():
     field_object = AsteroidField()
     player_object = Player(x = SCREEN_WIDTH / 2,y = SCREEN_HEIGHT / 2, PLAYER_SHOOT_COOLDOWN_SECONDS=PLAYER_SHOOT_COOLDOWN_SECONDS)
     
+    player_score = 0
+
     running = True
 
     while True:
@@ -53,6 +55,7 @@ def main():
                     log_event("asteroid_shot")
                     asteroid.split()
                     shot.kill()
+                    player_score += 10
 
         pygame.display.flip()
 
@@ -63,6 +66,8 @@ def main():
             if player_object.collides_with(asteroid):
                 log_event("player_hit")
                 print("Game over!")
+
+                print(f"Final Score: {player_score}")
                 sys.exit()
         
     pygame.quit()

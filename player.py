@@ -4,13 +4,14 @@ import pygame
 from shot import Shot
 import time
 
+player_score = 0
+
 class Player(CircleShape):
     def __init__(self,x,y, PLAYER_SHOOT_COOLDOWN_SECONDS):
         super().__init__(x,y,PLAYER_RADIUS) 
         self.rotation = 0
         self.last_shot = time.time()
         self.PLAYER_SHOOT_COOLDOWN_SECONDS = PLAYER_SHOOT_COOLDOWN_SECONDS
-
 
     def triangle(self):
         forward = pygame.Vector2(0, 1).rotate(self.rotation)

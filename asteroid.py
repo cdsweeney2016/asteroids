@@ -3,6 +3,7 @@ from circleshape import CircleShape
 from constants import LINE_WIDTH, ASTEROID_MIN_RADIUS
 from logger import log_event
 import random
+from player import player_score
 
 class Asteroid(CircleShape):
     def __init__(self, x, y, radius):
@@ -15,8 +16,13 @@ class Asteroid(CircleShape):
     def update(self, dt):
         self.position += self.velocity * dt
 
+    def reward_player(self):
+        global player_score
+        player_score += 10
+
     def split(self):
         self.kill()
+        self.reward_player()
         old_radius = self.radius
 
 
